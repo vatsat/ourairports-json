@@ -10,8 +10,8 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
+  convert:
+    name: Convert
     runs-on: ubuntu-latest
 
     strategy:
@@ -28,6 +28,10 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: node convert.js
+  update:
+    needs: convert
+    runs-on: ubuntu-latest
+    steps:
     - uses: actions/checkout@v4
       with: 
         ssh-key: ${{ secrets.GITHUBTOKEN }}
