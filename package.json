@@ -1,0 +1,22 @@
+{
+  "name": "airportjs",
+  "version": "0.1.0",
+  "description": "XML -> JSON",
+  "main": "convert.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vatsat/ourairports-json.git"
+  },
+  "author": "VATSAT",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vatsat/ourairports-json/issues"
+  },
+  "homepage": "https://github.com/vatsat/ourairports-json#readme",
+  "dependencies": {
+    "convert-csv-to-json": "^2.0.0"
+  }
+}
