@@ -29,3 +29,12 @@ jobs:
     - run: npm ci
     - run: node convert.js
     - run: echo 'Action has completed'
+    - uses: actions/checkout@v4
+      with: 
+        ssh-key: ${{ secrets.GITHUBTOKEN }}
+    - run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git add airports.json
+        git commit -m "JSON Convert"
+        git push
