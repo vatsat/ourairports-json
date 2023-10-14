@@ -21,6 +21,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with: 
+        ssh-key: ${{ secrets.GITHUBTOKEN }}
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -29,9 +31,7 @@ jobs:
     - run: npm ci
     - run: node convert.js
     - name: Push to Github
-      uses: actions/checkout@v4
-      with: 
-        ssh-key: ${{ secrets.GITHUBTOKEN }}
+      uses: actions/checkout@v3
     - run: |
         git config user.name github-actions
         git config user.email github-actions@github.co
