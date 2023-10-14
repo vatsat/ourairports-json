@@ -39,6 +39,7 @@ jobs:
         git config user.name github-actions
         git config user.email github-actions@github.co
         git add airports.json
+        echo activeAirports.json
         git commit -m "Airports JSON"
         git push
     - run: echo 'Action has completed'
