@@ -20,7 +20,6 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -28,18 +27,20 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: node convert.js
-  update:
-    needs: convert
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
+    - name: Push to Github
+      uses: actions/checkout@v4
       with: 
         ssh-key: ${{ secrets.GITHUBTOKEN }}
     - run: |
         git config user.name github-actions
         git config user.email github-actions@github.co
         git add airports.json
-        cat activeAirports.json
         git commit -m "Airports JSON"
         git push
+    
+  update:
+    needs: convert
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
     - run: echo 'Action has completed'
