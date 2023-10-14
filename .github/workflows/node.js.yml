@@ -36,6 +36,8 @@ jobs:
       with: 
         ssh-key: ${{ secrets.GITHUBTOKEN }}
     - run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.co
         git add .
         git commit -m "JSON Convert"
         git push
