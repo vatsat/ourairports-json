@@ -9,8 +9,8 @@ on:
     paths: ["airports.csv"]
 
 jobs:
-  convert:
-    name: Convert
+  airports:
+    name: Airports JSON
     runs-on: ubuntu-latest
 
     strategy:
@@ -35,10 +35,3 @@ jobs:
         git add airports.json
         git commit -m "Airports JSON"
         git push
-    
-  update:
-    needs: convert
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - run: echo 'Action has completed'

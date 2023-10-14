@@ -8,8 +8,8 @@ on:
     - cron: '3 * * * *'
 
 jobs:
-  convert:
-    name: Convert
+  activeAirports:
+    name: Active Airports JSON
     runs-on: ubuntu-latest
 
     strategy:
@@ -34,10 +34,3 @@ jobs:
         git add activeAirports.json
         git commit -m "activeAirports JSON"
         git push
-    
-  update:
-    needs: convert
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - run: echo 'Action has completed'

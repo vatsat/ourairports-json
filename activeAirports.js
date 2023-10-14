@@ -51,7 +51,7 @@ async function matrix(airports){
         }
       });
 
-      await writeFile('activeAirports.json', JSON.stringify(activeAirports))
+      await writeFile('./activeAirports.json', JSON.stringify(activeAirports))
 }
 
 async function writeFile(path, data){
