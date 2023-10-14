@@ -1,8 +1,8 @@
 const csvToJson = require('convert-csv-to-json');
 const fs = require('fs');
 
-const fileInputName = 'airports.csv'; 
-const fileOutputName = 'airports.json';
+const fileInputName = './airports.csv'; 
+const fileOutputName = './airports.json';
 let jsonString = '';
 
 convertCSVtoJSON().then(saveJSON);
