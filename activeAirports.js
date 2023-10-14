@@ -36,11 +36,11 @@ async function matrix(airports){
           }
         }
       });
-      Object.keys(activeAirports).forEach(icao => {
+      /*Object.keys(activeAirports).forEach(icao => {
         if(activeAirports[icao].departures === 0 && activeAirports[icao].arrivals === 0) {
             delete activeAirports[icao];
         }
-      })
+      })*/
       await airports.forEach((airport) => {
         if (
           Object.keys(activeAirports).filter(
