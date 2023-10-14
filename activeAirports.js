@@ -14,7 +14,7 @@ async function matrix(airports){
     const vatsimPilots = await fetch(
         "https://vatsat.pages.dev/api/main?source=vatsimPilots",
     ).then((response) => response.json());
-    vatsimPilots.source.data.features.forEach((pilot) => {
+    await vatsimPilots.source.data.features.forEach((pilot) => {
         if (pilot.properties.flightPlan) {
           const flightPlan = JSON.parse(pilot.properties.flightPlan);
           if (activeAirports[flightPlan.departure]) {
@@ -41,7 +41,7 @@ async function matrix(airports){
             delete activeAirports[icao];
         }
       })
-      airports.forEach((airport) => {
+      await airports.forEach((airport) => {
         if (
           Object.keys(activeAirports).filter(
             (airportICAO) => airportICAO === airport.gps_code,
