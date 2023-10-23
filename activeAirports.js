@@ -18,20 +18,20 @@ async function matrix(airports){
         if (pilot.properties.flightPlan) {
           const flightPlan = JSON.parse(pilot.properties.flightPlan);
           if (activeAirports[flightPlan.departure]) {
-            activeAirports[flightPlan.departure].departures++;
+            activeAirports[flightPlan.departure].departures.push(flightPlan);
           } else if (!activeAirports[flightPlan.departure]){
             activeAirports[flightPlan.departure] = {
-              departures: 0,
-              arrivals: 0,
+              departures: [flightPlan],
+              arrivals: [],
             };
           }
   
           if (activeAirports[flightPlan.arrival]) {
-            activeAirports[flightPlan.arrival].arrivals++;
+            activeAirports[flightPlan.arrival].arrivals.push(flightPlan);
           } else if (!activeAirports[flightPlan.arrival]){
             activeAirports[flightPlan.arrival] = {
-              arrivals: 0,
-              departures: 0,
+              arrivals: [flightPlan],
+              departures: [],
             };
           }
         }
